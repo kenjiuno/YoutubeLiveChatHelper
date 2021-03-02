@@ -43,6 +43,8 @@ Event 発行例:
     document.dispatchEvent(evt);
 ```
 
+![2021-03-02_13h58_52](https://user-images.githubusercontent.com/5955540/109599925-7fbaf300-7b5f-11eb-97de-8fcaad9dc511.png)
+
 ### youtube_livechat_router
 
 [youtube_livechat_router.user.js](./youtube_livechat_router.user.js)
