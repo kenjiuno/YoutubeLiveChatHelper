@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtube_livechat_emitter
 // @namespace    https://github.com/kenjiuno/YoutubeLiveChatHelper
-// @version      0.3
+// @version      0.4
 // @description  try to take over the world!
 // @author       kenjiuno
 // @match        https://www.youtube.com/watch?v=*
@@ -35,7 +35,14 @@ function messageToText(message) {
     return text;
 }
 
+function isInstalled() {
+    return (typeof window.youtubeLiveChatEmitter) === "object" && window.youtubeLiveChatEmitter.installed === true;
+}
+
 function hookNow() {
+    if (isInstalled()) {
+        return;
+    }
     const chatframe = document.getElementById("chatframe");
     if (chatframe) {
         const target = chatframe.contentDocument.querySelector("div#items.yt-live-chat-item-list-renderer");

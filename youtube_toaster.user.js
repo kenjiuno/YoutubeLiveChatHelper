@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtube_toaster
 // @namespace    https://github.com/kenjiuno/YoutubeLiveChatHelper
-// @version      0.7
+// @version      0.8
 // @description  try to take over the world!
 // @author       kenjiuno
 // @match        https://www.youtube.com/watch?v=*
@@ -41,8 +41,16 @@ function showMsg(message, isHTML) {
   }, 3000);
 }
 
+function isInstalled() {
+  return (typeof window.youtubeToaster) === "object" && window.youtubeLiveChatEmitter.installed === true;
+}
+
 (function () {
   'use strict';
+
+  if (isInstalled()) {
+    return;
+  }
 
   GM_addStyle(`
 /* The snackbar - position it at the bottom and in the middle of the screen */
