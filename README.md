@@ -10,7 +10,7 @@ Youtube LiveChat を、視聴者側で応援するためのヘルパースクリ
 
 ### youtube_livechat_emitter
 
-[youtube_livechat_emitter.js](./youtube_livechat_emitter.js)
+[youtube_livechat_emitter.user.js](./youtube_livechat_emitter.user.js)
 
 - Youtube ライブ視聴者画面の LiveChat を DOM から抽出します。
 - 通常チャットが追記されたタイミングで `livechat` Event を `document` オブジェクトへ放出します。
@@ -30,7 +30,7 @@ document.addEventListener("livechat", (e) => console.info(e.data));
 
 ### youtube_toaster
 
-[youtube_toaster.js](./youtube_toaster.js)
+[youtube_toaster.user.js](./youtube_toaster.user.js)
 
 - Youtube 動画視聴者画面の下部にトースト通知できる機能を追加します。
 - `document` オブジェクトへ発行された `toaster` Event に反応します。
@@ -45,6 +45,6 @@ Event 発行例:
 
 ### youtube_livechat_router
 
-[youtube_livechat_router.js](./youtube_livechat_router.js)
+[youtube_livechat_router.user.js](./youtube_livechat_router.user.js)
 
 - youtube_livechat_emitter によって放出される `livechat` Event のうち、`moderator` による通常チャットを youtube_toaster へ送り込みます。
