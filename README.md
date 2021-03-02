@@ -1,0 +1,50 @@
+# YoutubeLiveChatHelper
+
+## 概要
+
+Youtube LiveChat を、視聴者側で応援するためのヘルパースクリプト郡です。
+
+[Tampermonkey • Home](https://www.tampermonkey.net/) と一緒に使います。
+
+## スクリプトの用途
+
+### youtube_livechat_emitter
+
+[youtube_livechat_emitter.js](./youtube_livechat_emitter.js)
+
+- Youtube ライブ視聴者画面の LiveChat を DOM から抽出します。
+- 通常チャットが追記されたタイミングで `livechat` Event を `document` オブジェクトへ放出します。
+- LiveChat を視聴画面からデタッチしている場合は多分反応しません。
+- 将来的に Youtube 側の仕様が変更された場合は、反応しなくなる可能性があります。
+
+Event リッスン例:
+
+```js
+document.addEventListener("livechat", (e) => console.info(e.data));
+
+// e.data.timestamp : "8:38 AM", "1:59:48"
+// e.data.message : "text :emoji: :_memberEmoji:"
+// e.data.authorName : "handleName"
+// e.data.authorType : "", "member", "moderator"
+```
+
+### youtube_toaster
+
+[youtube_toaster.js](./youtube_toaster.js)
+
+- Youtube 動画視聴者画面の下部にトースト通知できる機能を追加します。
+- `document` オブジェクトへ発行された `toaster` Event に反応します。
+
+Event 発行例:
+
+```js
+    const evt = new Event("toaster", { "bubbles": false, "cancelable": false });
+    evt.data = { message: "動作✅", isHTML: true };
+    document.dispatchEvent(evt);
+```
+
+### youtube_livechat_router
+
+[youtube_livechat_router.js](./youtube_livechat_router.js)
+
+- youtube_livechat_emitter によって放出される `livechat` Event のうち、`moderator` による通常チャットを youtube_toaster へ送り込みます。
