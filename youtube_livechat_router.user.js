@@ -1,12 +1,18 @@
 // ==UserScript==
 // @name         youtube_livechat_router
 // @namespace    https://github.com/kenjiuno/YoutubeLiveChatHelper
-// @version      0.3
+// @version      0.4
 // @description  try to take over the world!
 // @author       kenjiuno
 // @match        https://www.youtube.com/watch?v=*
 // @grant        none
 // ==/UserScript==
+
+const app = "youtubeLiveChatRouter";
+
+function isInstalled() {
+    return (typeof window[app]) === "object" && window[app].installed === true;
+}
 
 (function () {
     'use strict';
@@ -43,4 +49,6 @@
             document.dispatchEvent(evt);
         }
     });
+
+    window[app] = { installed: true };
 })();
