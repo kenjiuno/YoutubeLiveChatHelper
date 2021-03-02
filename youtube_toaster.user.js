@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtube_toaster
 // @namespace    https://github.com/kenjiuno/YoutubeLiveChatHelper
-// @version      0.8
+// @version      0.9
 // @description  try to take over the world!
 // @author       kenjiuno
 // @match        https://www.youtube.com/watch?v=*
@@ -42,7 +42,7 @@ function showMsg(message, isHTML) {
 }
 
 function isInstalled() {
-  return (typeof window.youtubeToaster) === "object" && window.youtubeLiveChatEmitter.installed === true;
+  return (typeof window.youtubeToaster) === "object" && window.youtubeToaster.installed === true;
 }
 
 (function () {
