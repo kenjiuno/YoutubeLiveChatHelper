@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtube_toaster
 // @namespace    https://github.com/kenjiuno/YoutubeLiveChatHelper
-// @version      0.9
+// @version      0.10
 // @description  try to take over the world!
 // @author       kenjiuno
 // @match        https://www.youtube.com/watch?v=*
@@ -34,10 +34,7 @@ function showMsg(message, isHTML) {
 
   // After 3 seconds, remove the show class from DIV
   setTimeout(function () {
-    x.className = x.className.replace("show", "");
-    setTimeout(function () {
-      x.remove();
-    }, 1000);
+    x.remove();
   }, 3000);
 }
 
