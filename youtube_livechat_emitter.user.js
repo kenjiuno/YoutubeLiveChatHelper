@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         youtube_livechat_emitter
 // @namespace    https://github.com/kenjiuno/YoutubeLiveChatHelper
-// @version      0.4
+// @version      0.5
 // @description  try to take over the world!
 // @author       kenjiuno
 // @match        https://www.youtube.com/watch?v=*
+// @match        https://studio.youtube.com/video/*/livestreaming
 // @grant        none
 // ==/UserScript==
 
@@ -44,8 +45,8 @@ function hookNow() {
         return;
     }
     const chatframe = document.getElementById("chatframe");
-    if (chatframe) {
-        const target = chatframe.contentDocument.querySelector("div#items.yt-live-chat-item-list-renderer");
+    {
+        const target = (chatframe ? chatframe.contentDocument : document).querySelector("div#items.yt-live-chat-item-list-renderer");
         if (target) {
             console.info("YouTube live chat hook has been installed.");
             const observer = new MutationObserver((mutations) => {

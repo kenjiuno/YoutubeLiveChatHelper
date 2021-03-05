@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         youtube_livechat_router
 // @namespace    https://github.com/kenjiuno/YoutubeLiveChatHelper
-// @version      0.4
+// @version      0.5
 // @description  try to take over the world!
 // @author       kenjiuno
 // @match        https://www.youtube.com/watch?v=*
+// @match        https://studio.youtube.com/video/*/livestreaming
 // @grant        none
 // ==/UserScript==
 
