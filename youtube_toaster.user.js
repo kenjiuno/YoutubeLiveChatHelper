@@ -9,6 +9,11 @@
 // @grant        none
 // ==/UserScript==
 
+// document.addEventListener("toaster", (e) => console.info(e.data));
+
+// e.data.message : "<span ...>message</span>"
+// e.data.isHTML: true
+
 // See: https://stackoverflow.com/a/19392142
 // See: https://www.w3schools.com/howto/howto_js_snackbar.asp
 

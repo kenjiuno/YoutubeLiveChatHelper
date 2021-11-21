@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtube_livechat_emitter
 // @namespace    https://github.com/kenjiuno/YoutubeLiveChatHelper
-// @version      0.5
+// @version      0.6
 // @description  try to take over the world!
 // @author       kenjiuno
 // @match        https://www.youtube.com/watch?v=*
@@ -15,6 +15,8 @@
 // e.data.message : "text :emoji: :_memberEmoji:"
 // e.data.authorName : "handleName"
 // e.data.authorType : "", "member", "moderator"
+// e.data.getHtml(): "non-escaped plain message, <img> and so on"
+// e.data.getAuthorImgSrc(): "https://yt4.ggpht.com/..."
 
 function messageToText(message) {
     let text = "";
@@ -57,14 +59,16 @@ function hookNow() {
                             const authorName = node.querySelector("span#author-name");
                             const timestamp = node.querySelector("span#timestamp");
                             const message = node.querySelector("span#message");
-                            if (authorName && timestamp && message) {
-                                //console.info(timestamp.textContent, message.textContent, authorName.textContent, authorType);
+                            const imgImg = node.querySelector("img#img");
+                            if (authorName && timestamp && message && imgImg) {
                                 const evt = new Event("livechat", { "bubbles": false, "cancelable": false });
                                 evt.data = {
                                     timestamp: timestamp.textContent,
                                     message: messageToText(message),
                                     authorName: authorName.textContent,
                                     authorType: authorType,
+                                    getHtml: () => message.innerHTML,
+                                    getAuthorImgSrc: () => imgImg.getAttribute("src"),
                                 };
                                 document.dispatchEvent(evt);
                             }

@@ -26,6 +26,8 @@ document.addEventListener("livechat", (e) => console.info(e.data));
 // e.data.message : "text :emoji: :_memberEmoji:"
 // e.data.authorName : "handleName"
 // e.data.authorType : "", "member", "moderator"
+// e.data.getHtml(): "non-escaped plain message, <img> and so on"
+// e.data.getAuthorImgSrc(): "https://yt4.ggpht.com/..."
 ```
 
 ### youtube_toaster
