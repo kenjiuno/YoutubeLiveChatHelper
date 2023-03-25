@@ -52,3 +52,9 @@ Event 発行例:
 [youtube_livechat_router.user.js](./youtube_livechat_router.user.js)
 
 - youtube_livechat_emitter によって放出される `livechat` Event のうち、`moderator` による通常チャットを youtube_toaster へ送り込みます。
+
+### youtube_livechat_important_capture
+
+[youtube_livechat_important_capture.user.js](./youtube_livechat_important_capture.user.js)
+
+- youtube_livechat_emitter によって放出される `livechat` Event のうち、`moderator` による通常チャットを蓄積し、`Report` コマンドメニューより確認できるようにします。
