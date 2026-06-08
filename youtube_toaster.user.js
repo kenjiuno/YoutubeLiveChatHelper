@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtube_toaster
 // @namespace    https://github.com/kenjiuno/YoutubeLiveChatHelper
-// @version      0.12
+// @version      0.13
 // @description  try to take over the world!
 // @author       kenjiuno
 // @match        https://www.youtube.com/watch?v=*
@@ -27,12 +27,15 @@ function GM_addStyle(cssStr) {
   targ.appendChild(newNode);
 }
 
+const policyImpl = { createHTML: (string, sink) => string };
+const escapePolicy = (window.trustedTypes && trustedTypes.createPolicy) ? trustedTypes.createPolicy('default', policyImpl) : policyImpl;
+
 function showMsg(message, isHTML) {
   const x = document.createElement("div");
   // Add the "show" class to DIV
   x.className = "snackbar show";
   if (isHTML) {
-    x.innerHTML = message;
+    x.innerHTML = escapePolicy.createHTML(message);
   }
   else {
     x.textContent = message;
